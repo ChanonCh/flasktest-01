@@ -12,6 +12,7 @@ pypi==2.1
 pytz==2018.5
 PyYAML==3.13
 requests==2.20.0
+sec-wall==1.2
 spyne==2.12.14
 suds-jurko==0.6
 urllib3==1.24
