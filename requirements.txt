@@ -8,4 +8,3 @@ MarkupSafe==1.0
 pypi==2.1
 Werkzeug==0.14.1
 spyne==2.12.14
-Flask-Spyne==0.3.1
