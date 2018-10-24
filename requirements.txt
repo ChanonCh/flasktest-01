@@ -3,6 +3,7 @@ Flask==1.0.2
 gunicorn==19.9.0
 ItsDangerous==1.0.0
 Jinja2==2.10
+lxml==4.2.5
 MarkupSafe==1.0
 pypi==2.1
 spyne==2.12.14
