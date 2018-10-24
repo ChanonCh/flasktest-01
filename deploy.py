@@ -3,7 +3,6 @@
 # Write your code below
 from flask import Flask
 from flask_spyne import Spyne
-from spyne import Application, rpc, ServiceBase, Integer, Unicode
 from spyne.protocol.soap import Soap11
 from spyne.model.primitive import Unicode, Integer
 from spyne.model.complex import Iterable
