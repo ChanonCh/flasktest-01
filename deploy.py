@@ -1,4 +1,5 @@
 ##########################################################
+#!/usr/bin/env python
 
 # Write your code below
 from flask import Flask
@@ -10,10 +11,6 @@ from spyne.model.complex import Iterable
 
 app = Flask(__name__)
 spyne = Spyne(app)
-@app.route('/')
-def index():
-    return "Heroku deploy test"
-
 
 class SomeSoapService(spyne.Service):
     __service_url_path__ = '/soap/someservice'
@@ -28,14 +25,10 @@ class SomeSoapService(spyne.Service):
     @spyne.srpc(Unicode, _returns=Iterable(Unicode))
     def test1(str):
         yield str + '<xml></xml>'
-
+    
 
 if __name__ == '__main__':
     app.run(host = '127.0.0.1')
-
-
-
-
 
 
 ##########################################################
