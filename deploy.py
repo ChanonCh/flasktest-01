@@ -15,10 +15,41 @@ class HelloWorldService(ServiceBase):
         """
 
         for i in range(times):
-            yield u'Hello, %s' % name
+            yield u'Hello, %s' % name;
+		
+class GetHobbyService(ServiceBase):
+	#test 2 my hobby
+	@rpc(_returns=Iterable(Unicode))
+	def get_hobby(f):
+		f = open("static\hobby.xml","r");
+		print f;
+		return f;
+		
+class ParcelService(ServiceBase):
+	@rpc(Unicode, Unicode, Unicode , Integer, Integer, _returns=Iterable(Unicode))
+	def send_parcel_data(ctx, sname, rname, location, weight, status=0):
+		#file = open("static\data.txt", "w");
+		file = open("static\parceldata.xml","w");
+		file.write('<parceldata>');
+		file.write('<sender>'+ str(sname) +'</sender>');
+		file.write('<receiver>' + str(rname) + '</receiver>');
+		file.write('<location>' + str(location)+'</location>');
+		file.write('<weight>'+str(weight)+'</weight>');
+		file.write('<status>'+str(status)+'</status>');
+		file.write('</parceldata>');
+		file.close();
+		
+		return [u'Save done!!'];
+	
+class GetParcelStatusService(ServiceBase):
+	@rpc(_returns=Iterable(Unicode))
+	def get_parcel_status(f):
+		file = open("static\parceldata.xml", 'r');
+		return file;
+	
 
 
-application = Application([HelloWorldService], 'spyne.examples.hello.soap',
+application = Application([HelloWorldService, GetHobbyService ,ParcelService ,GetParcelStatusService], 'spyne.examples.hello.soap',
                           in_protocol=Soap11(validator='lxml'),
                           out_protocol=Soap11())
 
@@ -36,5 +67,5 @@ if __name__ == '__main__':
     logging.info("listening to http://127.0.0.1:8000")
     logging.info("wsdl is at: http://localhost:8000/?wsdl")
 
-    server = make_server('https://flasktest-01.herokuapp.com/', 8000, wsgi_application)
+    server = make_server('127.0.0.1', 8000, wsgi_application)
     server.serve_forever()
