@@ -7,8 +7,6 @@ Jinja2==2.10
 lxml==4.2.5
 MarkupSafe==1.0
 pypi==2.1
-pytz==2018.5
-PyYAML==3.13
 requests==2.20.0
 sec-wall==1.2
 spyne==2.12.14
