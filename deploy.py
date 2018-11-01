@@ -69,15 +69,15 @@ class ParcelService(ServiceBase):
 class GetParcelStatusService(ServiceBase):
 	@rpc(Integer,_returns=Iterable(Unicode))
 	def get_parcel_status(ctx,idn):
-		file_path = "static\parceldata.xml";
-		tree = et.parse(file_path);
-		root = tree.getroot();
-		elm = root.findall("id");
-		stat = ".";
-		for i in elm:
-		    if(str(idn) == i.text):
+	    file_path = "static\parceldata.xml";
+	    tree = et.parse(file_path);
+	    root = tree.getroot();
+	    elm = root.findall("id");
+	    stat = ".";
+	    for i in elm:
+		if(str(idn) == i.text):
 		    stat = str(i.find("status").text);
-		return [stat];
+	    return [stat];
 
 
 class ChangeParcelStatusService(ServiceBase):
@@ -92,10 +92,10 @@ class ChangeParcelStatusService(ServiceBase):
 		for i in elm:
 		    #print(i.find("status").text);
 		    if(str(idn) == i.text):
-		    i.find("status").text = str(status);
-		    #print("If in" + str(i.find("status").text));
-		    #else:
-		    #print("Else in");
+			i.find("status").text = str(status);
+		#print("If in" + str(i.find("status").text));
+		#else:
+		#print("Else in");
 		tree.write(file_path);
 		return [u'Change done!'];
 	
