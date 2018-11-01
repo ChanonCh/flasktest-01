@@ -31,7 +31,8 @@ class ParcelService(ServiceBase):
 	@rpc(Unicode, Unicode, Unicode , Integer, Integer, _returns=Iterable(Unicode))
 	def send_parcel_data(ctx, sname, rname, location, weight, status="0"):
 		#file = open("static\data.txt", "w");
-		file_path = "static\parceldata.xml";
+		tmp = os.path.join("static","parceldata.xml");
+		file_path = tmp;
 		tree = et.parse(file_path);
 		root = tree.getroot();
 		allid = root.findall("id");
@@ -71,7 +72,8 @@ class ParcelService(ServiceBase):
 class GetParcelStatusService(ServiceBase):
 	@rpc(Integer,_returns=Iterable(Unicode))
 	def get_parcel_status(ctx,idn):
-	    file_path = "static\parceldata.xml";
+	    tmp = os.path.join("static","parceldata.xml");
+	    file_path = tmp;
 	    tree = et.parse(file_path);
 	    root = tree.getroot();
 	    elm = root.findall("id");
@@ -85,7 +87,8 @@ class GetParcelStatusService(ServiceBase):
 class ChangeParcelStatusService(ServiceBase):
 	@rpc(Unicode,Integer,_returns=Iterable(Unicode))
 	def change_parcel_status(ctx,status,idn):
-		file_path = "static\parceldata.xml";
+		tmp = os.path.join("static","parceldata.xml");
+		file_path = tmp;
 		tree = et.parse(file_path);
 		root = tree.getroot();
 		elm = root.findall("id");
