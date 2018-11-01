@@ -16,7 +16,7 @@ class HelloWorldService(ServiceBase):
 
         for i in range(times):
             yield u'Hello, %s' % name;
-		
+
 class GetHobbyService(ServiceBase):
 	#test 2 my hobby
 	@rpc(_returns=Iterable(Unicode))
@@ -73,13 +73,13 @@ class GetParcelStatusService(ServiceBase):
 		tree = et.parse(file_path);
 		root = tree.getroot();
 		elm = root.findall("id");
-		stat;
+		stat = "";
 		for i in elm:
 		    if(str(idn) == i.text):
-			stat = i.find("status").text;
+		    stat = str(i.find("status").text);
 		return [stat];
-	    
-	    
+
+
 class ChangeParcelStatusService(ServiceBase):
 	@rpc(Unicode,Integer,_returns=Iterable(Unicode))
 	def change_parcel_status(ctx,status,idn):
@@ -92,10 +92,10 @@ class ChangeParcelStatusService(ServiceBase):
 		for i in elm:
 		    #print(i.find("status").text);
 		    if(str(idn) == i.text):
-			i.find("status").text = str(status);
-			#print("If in" + str(i.find("status").text));
+		    i.find("status").text = str(status);
+		    #print("If in" + str(i.find("status").text));
 		    #else:
-			#print("Else in");
+		    #print("Else in");
 		tree.write(file_path);
 		return [u'Change done!'];
 	
