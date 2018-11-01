@@ -73,7 +73,7 @@ class GetParcelStatusService(ServiceBase):
 		tree = et.parse(file_path);
 		root = tree.getroot();
 		elm = root.findall("id");
-		stat = "";
+		stat = ".";
 		for i in elm:
 		    if(str(idn) == i.text):
 		    stat = str(i.find("status").text);
