@@ -22,7 +22,7 @@ class GetHobbyService(ServiceBase):
 	@rpc(_returns=Iterable(Unicode))
 	def get_hobby(f):
 		f = open("static\hobby.xml","r");
-		print f;
+		print (f);
 		return f;
 		
 class ParcelService(ServiceBase):
