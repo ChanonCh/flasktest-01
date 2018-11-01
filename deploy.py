@@ -1,6 +1,7 @@
 from spyne import Application, rpc, ServiceBase, Iterable, Integer, Unicode
 from spyne.protocol.soap import Soap11
 from spyne.server.wsgi import WsgiApplication
+import os
 
 import xml.etree.ElementTree as et
 
@@ -21,7 +22,8 @@ class GetHobbyService(ServiceBase):
 	#test 2 my hobby
 	@rpc(_returns=Iterable(Unicode))
 	def get_hobby(f):
-		f = open("static\hobby.xml","r");
+		tmp = os.path.join("static","hobby.xml");
+		f = open(tmp,"r");
 		print (f);
 		return f;
 		

@@ -1,7 +1,7 @@
 from suds.client import Client
 import xml.etree.ElementTree as et
-client = Client('https://flasktest-01.herokuapp.com/?wsdl', cache=None)
-#client = Client('http://localhost:8000/?wsdl', cache=None)
+#client = Client('https://flasktest-01.herokuapp.com/?wsdl', cache=None)
+client = Client('http://localhost:8000/?wsdl', cache=None)
 
 #print(client.service.say_hello(u'J?r?me', 5));
 a = client.service.get_hobby();
