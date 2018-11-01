@@ -75,8 +75,8 @@ class GetParcelStatusService(ServiceBase):
 	    elm = root.findall("id");
 	    stat = ".";
 	    for i in elm:
-		if(str(idn) == i.text):
-		    stat = str(i.find("status").text);
+	        if(str(idn) == i.text):
+	            stat = str(i.find("status").text);
 	    return [stat];
 
 
@@ -92,7 +92,7 @@ class ChangeParcelStatusService(ServiceBase):
 		for i in elm:
 		    #print(i.find("status").text);
 		    if(str(idn) == i.text):
-			i.find("status").text = str(status);
+		    i.find("status").text = str(status);
 		#print("If in" + str(i.find("status").text));
 		#else:
 		#print("Else in");
